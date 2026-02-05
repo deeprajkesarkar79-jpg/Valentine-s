@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine </title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    h1 {
+      color: #ff3366;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .yes {
+      background-color: #ff3366;
+      color: white;
+      left: 50px;
+      top: 30px;
+    }
+
+    .yes:hover {
+      background-color: #e62e5c;
+    }
+
+    .no {
+      background-color: #ccc;
+      color: #666;
+      left: 180px;
+      top: 30px;
+    }
+
+    /* Celebration page */
+    .celebrate {
+      display: none;
+    }
+
+    img {
+      width: 260px;
+      margin-top: 20px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Question Page -->
+  <div class="card" id="questionPage">
+    <h1>Will u be my valentine bu? </h1>
+
+    <div class="buttons">
+      <button class="yes" onclick="showCelebrate()">Yes 😍</button>
+      <button class="no" id="noBtn">No 🥹</button>
+    </div>
+  </div>
+
+  <!-- Celebration Page -->
+  <div class="card celebrate" id="celebratePage">
+    <h1>YAYYYYY ❣️🥳</h1>
+    <p>Mala mahit hot tu yes bolnar 🥳</p>
+    <p>Happy Valentines Day, my Valentine </p>
+    <img src="https://media.giphy.com/media/3o6fJ1BM7R2EBRDnxK/giphy.gif" alt="Celebration GIF">
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Function to move the "No" button randomly
+    function moveNoButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth - 50;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+
+    // Make the "No" button run away on hover or click
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    // Show celebration page on Yes click
+    function showCelebrate() {
+      document.getElementById("questionPage").style.display = "none";
+      document.getElementById("celebratePage").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
